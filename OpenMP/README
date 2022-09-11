@@ -48,3 +48,11 @@ stencils/fdtd-apml/fdtd-apml.c
 stencils/jacobi-1d-imper/jacobi-1d-imper.c
 stencils/jacobi-2d-imper/jacobi-2d-imper.c
 stencils/seidel-2d/seidel-2d.c
+
+Copyright (c) 2022-2023
+Contact: masoume hadiyan Pouchet <m.hadiyanamiri@gmail.com>
+use cd command to be in openmp file direction
+use make command 
+use ./example_acc 
+to commit project
+
