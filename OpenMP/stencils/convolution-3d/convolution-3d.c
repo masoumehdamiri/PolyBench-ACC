@@ -29,7 +29,7 @@ void init_array (int ni, int nj, int nk,
 
   for (i = 0; i < ni; i++)
     for (j = 0; j < nj; j++)
-      for (k = 0; j < nk; k++)
+      for (k = 0; k < nk; k++)
 	{
 	  A[i][j][k] = i % 12 + 2 * (j % 7) + 3 * (k % 13);
 	}

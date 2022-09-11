@@ -2,7 +2,7 @@
 ########################################
 
 # Default OpenACC Target is OpenCL
-TARGET_LANG = OPENCL
+TARGET_LANG = OPENMP
 
 # Uncomment if you want CUDA
 # TARGET_LANG = CUDA
@@ -23,4 +23,4 @@ ACCFLAGS = --codelet-required --openacc-target=$(TARGET_LANG)
 CC = gcc
 
 # Compiler flags
-CFLAGS = -O2
+CFLAGS = -O3 -fopenmp -lgomp 

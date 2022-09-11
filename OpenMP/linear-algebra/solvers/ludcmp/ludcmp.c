@@ -85,7 +85,10 @@ void kernel_ludcmp(int n,
           w = w- A[j][k] * A[k][i];
 	      A[j][i] = w / A[i][i];
       }
-      #pragma omp barrier
+    }
+    #pragma omp for private (j, k, w)
+    for (i = 0; i < _PB_N; i++)
+    {
       for (j = i+1; j <= _PB_N; j++)
 	    {
 	      w = A[i+1][j];

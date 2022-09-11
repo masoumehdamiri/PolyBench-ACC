@@ -18,6 +18,7 @@
 /* Include benchmark-specific header. */
 /* Default data type is double, default size is 4000. */
 #include "3mm.h"
+#include <omp.h>
 
 
 /* Array initialization. */
@@ -80,9 +81,10 @@ void kernel_3mm(int ni, int nj, int nk, int nl, int nm,
   {
     /* E := A*B */
     #pragma omp for
+    
     for (i = 0; i < _PB_NI; i++)
       for (j = 0; j < _PB_NJ; j++)
-	{
+	{//printf("number of threads is: %d\n", omp_get_num_threads());
           E[i][j] = 0;
 	  for (k = 0; k < _PB_NK; ++k)
 	    E[i][j] += A[i][k] * B[k][j];
@@ -137,6 +139,8 @@ int main(int argc, char** argv)
   /* Start timer. */
   polybench_start_instruments;
 
+  //omp_set_num_threads(4);
+  printf("number of threads is: %d\n", omp_get_num_threads());
   /* Run kernel. */
   kernel_3mm (ni, nj, nk, nl, nm,
 	      POLYBENCH_ARRAY(E),

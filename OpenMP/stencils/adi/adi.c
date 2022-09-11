@@ -70,7 +70,7 @@ void kernel_adi(int tsteps,
 
 #pragma omp parallel private (t, i1, i2)
   {
-    #pragma omp master
+    //#pragma omp master
     {
       for (t = 0; t < _PB_TSTEPS; t++)
       {

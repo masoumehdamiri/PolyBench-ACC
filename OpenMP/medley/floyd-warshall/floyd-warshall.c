@@ -11,6 +11,7 @@
 #include <unistd.h>
 #include <string.h>
 #include <math.h>
+#include <sched.h>
 
 /* Include polybench common header. */
 #include <polybench.h>
@@ -61,12 +62,15 @@ void kernel_floyd_warshall(int n,
   DATA_TYPE path_new, path_old;
   #pragma scop
   #pragma omp parallel
-  {
-    #pragma omp master
+  { 
+    //printf("threads num %d of %d running on cpu\n",omp_get_thread_num(),sched_getcpu());
+    
+    //#pragma omp master
     {
       for (k = 0; k < _PB_N; k++)
       { 
-        #pragma omp for shared (k) private (j)
+        #pragma omp parallel for shared (k) private (j)
+        // printf("threads num %d of %d running on cpu\n",omp_get_thread_num(),sched_getcpu());
         for(i = 0; i < _PB_N; i++)
           for (j = 0; j < _PB_N; j++)
           {
@@ -76,6 +80,7 @@ void kernel_floyd_warshall(int n,
             path[i][j] = (path[i][j] < path_new)
               ? path[i][j]
               : path_new;
+          }
       }
     }
   }

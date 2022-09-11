@@ -66,8 +66,8 @@ void kernel_trisolv(int n,
   #pragma scop
   #pragma omp parallel private (i,j)
   {
-    #pragma omp master
-    {
+   // #pragma omp master
+   // {
       for (i = 0; i < _PB_N; i++)
       {
         x[i] = c[i];
@@ -76,7 +76,7 @@ void kernel_trisolv(int n,
           x[i] = x[i] - A[i][j] * x[j];
         x[i] = x[i] / A[i][i];
       }
-    }
+    //}
   }
   #pragma endscop
 }

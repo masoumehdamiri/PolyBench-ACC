@@ -86,7 +86,7 @@ void kernel_2mm(int ni, int nj, int nk, int nl,
     #pragma omp for private (j, k)
     for (i = 0; i < _PB_NI; i++)
       for (j = 0; j < _PB_NJ; j++)
-  	{
+  	{//printf("number of threads is: %d\n", omp_get_num_threads());
     	  tmp[i][j] = 0;
   	  for (k = 0; k < _PB_NK; ++k)
 	    tmp[i][j] += alpha * A[i][k] * B[k][j];

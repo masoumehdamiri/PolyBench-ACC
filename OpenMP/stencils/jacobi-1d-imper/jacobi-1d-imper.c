@@ -67,7 +67,7 @@ void kernel_jacobi_1d_imper(int tsteps,
   #pragma scop
   #pragma omp parallel
   {
-    #pragma omp master
+    //#pragma omp master
     {
       for (t = 0; t < _PB_TSTEPS; t++)
       {

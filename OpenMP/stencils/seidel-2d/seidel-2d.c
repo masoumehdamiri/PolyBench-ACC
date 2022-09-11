@@ -63,7 +63,7 @@ void kernel_seidel_2d(int tsteps,
   #pragma scop
   #pragma omp parallel private (t,i,j)
   {
-    #pragma omp master
+    //#pragma omp master
     {
       for (t = 0; t <= _PB_TSTEPS - 1; t++) {
         #pragma omp for schedule(static) collapse (2)

@@ -17,7 +17,8 @@ all : exe
 exe : $(EXE)
 
 $(EXE) : $(SRC)
-	$(ACC) $(ACCFLAGS) $(CC) $(CFLAGS) $(INCPATHS) $^ -o $@
+	#$(ACC) $(ACCFLAGS) $(CC) $(CFLAGS) $(INCPATHS) $^ -o $@
+	$(CC) $(CFLAGS) $(INCPATHS) $^ -o $@ -lm
 
 clean :
 	-rm -vf __hmpp* -vf $(EXE) *~ 
